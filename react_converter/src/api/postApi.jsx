@@ -1,11 +1,12 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL:"https://v6.exchangerate-api.com/v6/3146abb8b6859f88e66444f2",
-    
+  baseURL: "https://v6.exchangerate-api.com/v6/thapatechnical(AddYourKey)",
 });
 
-// we need to crate a  get request
-export const currencyConverter = (fromCurrency, toCurrency, amount) => {
-  return api.get(`/pair/${fromCurrency}/${toCurrency}/${amount}`);
+// to get the current exchange rate
+export const currencyConverter = async (fromCurrency, toCurrency, amount) => {
+  const res = await api.get(`/pair/${fromCurrency}/${toCurrency}/${amount}`);
+  console.log(res);
+  return res.data.conversion_result;
 };
